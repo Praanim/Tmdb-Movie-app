@@ -2,6 +2,9 @@
 //
 //     final movie = movieFromJson(jsonString);
 
+String notFoundImage =
+    'https://imgs.search.brave.com/A_PbIOfM-hxkSoGkZ0XISKfHbXv0EKrNkNL8fkVkll4/rs:fit:1150:647:1/g:ce/aHR0cHM6Ly93d3cu/c2Fsb25sZmMuY29t/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDE4/LzAxL2ltYWdlLW5v/dC1mb3VuZC0xLXNj/YWxlZC0xMTUweDY0/Ny5wbmc';
+
 class Movie {
   Movie({
     required this.adult,
@@ -32,7 +35,7 @@ class Movie {
         originalLanguage: json["original_language"] ?? "not found",
         originalName: json["original_name"] ?? "not found",
         overview: json["overview"] ?? "not found",
-        posterPath: json["poster_path"],
+        posterPath: json["poster_path"] ?? notFoundImage,
         mediaType: json["media_type"] ?? "not found",
         genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
       );
