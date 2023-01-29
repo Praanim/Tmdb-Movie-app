@@ -34,7 +34,7 @@ class BigCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               image: DecorationImage(
                   image: NetworkImage(
-                    'https://image.tmdb.org/t/p/w500' + movie.posterPath,
+                    'https://image.tmdb.org/t/p/original' + movie.posterPath,
                   ),
                   fit: BoxFit.cover)),
         ),

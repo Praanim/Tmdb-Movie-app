@@ -3,6 +3,8 @@ import 'package:api_with_riverpod/core/error_text.dart';
 import 'package:api_with_riverpod/core/loader.dart';
 import 'package:api_with_riverpod/ui/components/big_mov_card.dart';
 import 'package:api_with_riverpod/ui/components/common.dart';
+import 'package:api_with_riverpod/ui/components/search_box.dart';
+import 'package:api_with_riverpod/ui/screens/homeScreen/search_movie_delegate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -15,13 +17,23 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   final String randomphoto =
-      'https://scontent.fktm10-1.fna.fbcdn.net/v/t39.30808-6/312399827_1311814562690321_94348874669166429_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=jw56fq068D0AX8ULOiB&tn=_5ZE5ItnwGE_U7lh&_nc_ht=scontent.fktm10-1.fna&oh=00_AfA1DwkBTbOe8E1cv9T-JUtgu4w0igldQ95Yqv8ePgAPhg&oe=63D5A52B';
+      'https://imgs.search.brave.com/jDf0IJpjxJTsdFTvYtX5fJwuZlJVvCy7OeM-fVS0HO8/rs:fit:493:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5h/d0FpTVMxQkNBUTJ4/UzJsY2RYR2x3SGFI/SCZwaWQ9QXBp';
   @override
   Widget build(BuildContext context) {
     return ref.watch(trendingMoviesProvider).when(
           data: (movies) {
             return Scaffold(
               backgroundColor: Common.backGroundColor,
+              appBar: AppBar(elevation: 0, actions: [
+                IconButton(
+                    onPressed: () => showSearch(
+                        context: context,
+                        delegate: SearchMovieDelegate(ref: ref)),
+                    icon: Icon(
+                      Icons.search,
+                      color: Colors.white,
+                    ))
+              ]),
               body: SingleChildScrollView(
                 child: SafeArea(
                   child: Padding(

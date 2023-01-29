@@ -25,6 +25,18 @@ class _MyAppState extends ConsumerState<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+        theme: ThemeData.light().copyWith(
+            scaffoldBackgroundColor: Common.backGroundColor,
+            cardColor: Common.backGroundColor,
+            appBarTheme: AppBarTheme(
+              backgroundColor: Common.backGroundColor,
+              iconTheme: IconThemeData(
+                color: Colors.white,
+              ),
+            ),
+            backgroundColor: Common.backGroundColor,
+            primaryColorLight: Common.backGroundColor,
+            primaryColor: Color.fromARGB(255, 153, 117, 219)),
         routeInformationParser: RoutemasterParser(),
         routerDelegate: RoutemasterDelegate(
           routesBuilder: (context) {

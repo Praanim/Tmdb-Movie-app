@@ -2,6 +2,8 @@ import 'package:api_with_riverpod/controller/services_controller.dart';
 import 'package:api_with_riverpod/core/error_text.dart';
 import 'package:api_with_riverpod/core/loader.dart';
 import 'package:api_with_riverpod/ui/components/common.dart';
+import 'package:api_with_riverpod/ui/components/video_card.dart';
+import 'package:api_with_riverpod/ui/components/youtube_player_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -15,6 +17,11 @@ class MovieDetails extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return ref.watch(movieDetailsProvider(id)).when(
           data: (movieDetails) {
+            if (movieDetails == null) {
+              return Scaffold(
+                body: Center(child: Text("Something went wrong")),
+              );
+            }
             return Scaffold(
                 backgroundColor: Common.backGroundColor,
                 body: NestedScrollView(
@@ -111,7 +118,16 @@ class MovieDetails extends ConsumerWidget {
                               color: Color.fromARGB(255, 87, 93, 119),
                               fontSize: 15,
                               fontWeight: FontWeight.bold),
-                        )
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        // VideoCard(
+                        //   ref: ref,
+                        //   movId: movieDetails.id.toString(),
+                        // )
+
+                        YoutubePlayerCard(movid: movieDetails.id.toString())
                       ],
                     ),
                   ),
