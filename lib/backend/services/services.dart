@@ -25,9 +25,9 @@ class Services {
       final List movies = decodeJson['results'];
       final List<Movie> fMovies =
           movies.map((fMovie) => Movie.fromJson(fMovie)).toList();
-      for (int i = 0; i < fMovies.length; i++) {
-        print(fMovies[i].posterPath);
-      }
+      // for (int i = 0; i < fMovies.length; i++) {
+      //   print(fMovies[i].posterPath);
+      // }
       return fMovies;
     } else {
       throw Exception(response.reasonPhrase);

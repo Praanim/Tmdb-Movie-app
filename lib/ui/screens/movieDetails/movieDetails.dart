@@ -35,6 +35,10 @@ class MovieDetails extends ConsumerWidget {
                         background: Image.network(
                           'https://image.tmdb.org/t/p/w500' +
                               movieDetails.posterPath,
+                          errorBuilder: (context, error, stackTrace) {
+                            print(error.toString());
+                            return Text("Your Error widget");
+                          },
                           fit: BoxFit.fill,
                         ),
                       ),
